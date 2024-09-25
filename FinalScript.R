@@ -1,4 +1,5 @@
 #install packages
+install.packages("devtools")   # Install the devtools package for package development tools
 install.packages("tidyverse")  # Collection of packages for data manipulation and visualization
 install.packages("psych")      # Package for psychological research and statistical functions
 install.packages("Hmisc")      # Miscellaneous useful functions including correlation
@@ -7,6 +8,8 @@ install.packages("cluster")    # Functions for clustering analysis
 install.packages("lubridate")  # For working with date and time data
 install.packages("ggmap")      # Google Maps and other maps visualization
 install.packages("frequency")  # Frequency analysis and visualization
+install.packages('dplyr')      # Data manipulation and analysis
+
 
 #import library
 library(cluster)       # Clustering algorithms
@@ -19,6 +22,7 @@ library(stringr)       # String manipulation functions
 library(ggmap)         # Map visualization using Google Maps
 library(readr)         # For reading .csv files and other text data
 library(frequency)     # Frequency table generation
+library(dplyr)         # Data manipulation and analysis
 
 #import data
 dataset <- read_csv("Mother Jones - Mass Shootings Database, 1982 - 2021 - Sheet1 (1).csv")
@@ -283,8 +287,10 @@ wordcloud2(wc1, minRotation = -pi/6, maxRotation = -pi/6, minSize = 10, rotateRa
 #---------------------------- Geospatial visualizations -----------------------------------
 
 # Get map of the US using bounding box and visualize shooting locations on the map
+register_stadiamaps("YOUR-API-KEY-HERE" , write = TRUE) #https://docs.stadiamaps.com/guides/migrating-from-stamen-map-tiles/#ggmap
 us <- c(left = -125, bottom = 25.75, right = -67, top = 49)
-map <- get_stamenmap(us, zoom = 5, maptype = "terrain") %>% ggmap()
+map <- get_stadiamap(us, zoom = 5, maptype = "stamen_terrain") %>% ggmap()
+#“stamen_terrain”, “stamen_toner”, “stamen_toner_lite”, “stamen_watercolor”, “alidade_smooth”, “alidade_smooth_dark”, “outdoors”, “stamen_terrain_background”, “stamen_toner_background”, “stamen_terrain_labels”, “stamen_terrain_lines”, “stamen_toner_labels”, “stamen_toner_lines”
 
 # Scatter plot: Location of shootings on the map (red points)
 map + geom_point(aes(x=dt$longitude, y=dt$latitude), data=dataset, colour="red", size=2)
