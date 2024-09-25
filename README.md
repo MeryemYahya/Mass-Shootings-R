@@ -57,8 +57,11 @@ Age vs. Total Victims: A scatter plot to assess whether there's a relationship b
 
 ### 4. Word Cloud:
 Word Cloud of Shooting Locations & Perpetrator Race: Visualization of the frequency of certain locations and racial demographics of perpetrators based on textual descriptions within the dataset.
-![Word cloud State vs total victims](Word cloud State vs total victims.png)
-![Word Cloud City vs total victims](Word Cloud City vs total victims.png)
+
+<div style="display: flex; justify-content: space-between;">
+    <img src="Word_cloud_State_vs_total_victims.png" alt="Word cloud State vs total victims" width="45%"/>
+    <img src="Word_Cloud_City_vs_total_victims.png" alt="Word Cloud City vs total victims" width="45%"/>
+</div>
 
 ### 5. Geographical Mapping:
  **Scatter Plot on U.S. Map**: Locations of mass shootings were plotted using latitude and longitude data, with the size of the points indicating the number of victims.
